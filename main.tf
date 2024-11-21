@@ -112,6 +112,11 @@ resource "aws_amplify_domain_association" "default" {
       prefix      = sub_domain.value.prefix
     }
   }
+
+  certificate_settings {
+    type                   = each.value.certificate_settings.type
+    custom_certificate_arn = each.value.certificate_settings.custom_certificate_arn
+  }
 }
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/amplify_webhook

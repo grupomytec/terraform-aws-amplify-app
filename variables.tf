@@ -183,6 +183,12 @@ variable "domains" {
       branch_name = string
       prefix      = string
     }))
+    certificate_settings = optional(object({
+      type                   = string
+      custom_certificate_arn = optional(string, null)
+      }), {
+      type = "AMPLIFY_MANAGED"
+    })
   }))
   description = "Amplify custom domain configurations"
   default     = {}
